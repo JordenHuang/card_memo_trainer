@@ -32,14 +32,14 @@ let hide_time = document.getElementById("hide-time");
 function to_restart(){
     let conf = confirm("Are you sure you want to RESTART?");
     if(conf == true){
-        window.location.pathname = "/card_memo_web_app/start_page.html";
+        window.location.pathname = "/card_memo_trainer/start_page.html";
     }
 }
 
 function go_home(){
     let conf = confirm("Are you sure you want to QUIT?");
     if(conf == true){
-        window.location.pathname = "/card_memo_web_app/index.html";
+        window.location.pathname = "/card_memo_trainer/index.html";
     }
 }
 
