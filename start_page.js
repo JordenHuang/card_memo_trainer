@@ -309,14 +309,13 @@ bar.addEventListener("click", function(){
 // use keyboard to go to show next card
 window.addEventListener("keydown", function(e){
     var key_id = e.code;
-    console.log(key_id);
+    // console.log(key_id);
     
 
     switch(key_id){
     case "KeyZ":
     case "ArrowRight":
         bar.click();
-        console.log('suss');
         break;
     
     case "KeyX":
@@ -326,7 +325,7 @@ window.addEventListener("keydown", function(e){
         bar.click();
         break;
     default:
-        console.log(key_id);
+        // console.log(key_id);
         break;
     }
 })
