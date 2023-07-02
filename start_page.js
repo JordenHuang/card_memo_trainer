@@ -3,11 +3,6 @@
 const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase());
 
 
-// for the device resolution
-document.documentElement.style.cssText = `--screen_resolution: ${window.screen.width}px`;
-// console.log(window.screen.width);
-
-
 // for menu button
 let menu_btn = document.querySelector(".menu-btn");
 let overlay_mode = document.querySelector(".overlay");
@@ -183,9 +178,15 @@ function shuffle(array){
     return array;
 }
 
+function preload_img(img_url){
+    let img = new Image();
+    img.src = img_url;
+}
+
 function change_img(l_or_r){
     switch(l_or_r.bar){
         case 0: default:
+            preload_img(shuffled_img[3]);
             if(card_count === 0){
                 bar.textContent = "click here to change to next card";
                 box3.src = shuffled_img[card_count++];
@@ -212,12 +213,11 @@ function change_img(l_or_r){
             //TODO: right click to go back to the last card
 
     }
-
-    
+    preload_img(shuffled_img[card_count+1]);    
 }
 
 shuffle(shuffled_img);
-bar.addEventListener("mouseup", change_img);
+bar.addEventListener("click", change_img);
 
 
 
@@ -265,9 +265,8 @@ function update_timer(){
 }
 
 // most important part of the first part (memorization page)
-bar.addEventListener("mouseup", function(){
+bar.addEventListener("click", function(){
     if(once){
-        // console.log("once")
         once = false;
         update_timer();
     }
@@ -300,13 +299,37 @@ bar.addEventListener("mouseup", function(){
         }, 1200);
 
         // remove event listener
-        bar.removeEventListener("mouseup", change_img);
-        bar.removeEventListener("mouseup", arguments.callee);
+        bar.removeEventListener("click", change_img);
+        bar.removeEventListener("click", arguments.callee);
         console.log('bar.close');
     }
 })
 
 
+// use keyboard to go to show next card
+window.addEventListener("keydown", function(e){
+    var key_id = e.code;
+    console.log(key_id);
+    
+
+    switch(key_id){
+    case "KeyZ":
+    case "ArrowRight":
+        bar.click();
+        console.log('suss');
+        break;
+    
+    case "KeyX":
+    case "ArrowUp":
+        bar.click();
+        bar.click();
+        bar.click();
+        break;
+    default:
+        console.log(key_id);
+        break;
+    }
+})
 
 
 

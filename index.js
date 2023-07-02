@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // History button for now
+    // History button
     var history_btn = document.getElementById("history-btn");
     history_btn.addEventListener("click", function(){
       window.alert("Still working");
     });
-    // Setting button for now
+    // Setting button
     var setting_btn = document.getElementById("setting-btn");
     setting_btn.addEventListener("click", function(){
       menuButton.click();

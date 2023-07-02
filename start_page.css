@@ -1,14 +1,10 @@
 :root{
-    --screen_resolution: 1440px;
+    --screen_resolution: 100%;
 
     --card_width: 9em;  /* 9*16 = 144px */
     --checker_card_width: 4em;
     --suits_width: 5em;
     --show_answer_width: 5em;
-
-    --card_width_for_mobile: calc(var(--screen_resolution) / 10);
-    --checker_card_width_for_mobile: 2.3em;
-    --show_answer_width_for_mobile: 2.5em;
 }
 
 body {
@@ -17,12 +13,12 @@ body {
     font-family: monospace, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     height: 100vh;
 
-
+    /* disable text selection*/
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 
     /* disable scorll */
     overflow: hidden;
@@ -39,23 +35,12 @@ body {
 }
 
 .overlay {
-    /* position: absolute;
-    width: 100%;
-    height: 25vh;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.1);
-    z-index: 3;
-    cursor: pointer;
-    display: none; */
-
     width: var(--screen_resolution);
     height: 100%;
     margin: 0;
     padding: 0;
     
     position: absolute;
-    /* width: 1440px;
-    height: 100%; */
     background-color: rgba(0,0,0,0.6);
     z-index: 7;
 
@@ -105,7 +90,6 @@ body {
 
 .menu-btn {
     background-color: #5e5e5e;
-    /* background-color: rgb(225, 225, 225); */
     color: #fff;
     border: none;
     padding: 10px;
@@ -127,11 +111,6 @@ body {
     margin: 0;
     padding: 0;
     position: absolute;
-
-    /* disable text selection*/
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
 }
 .bar {
     position: absolute;
@@ -173,9 +152,6 @@ body {
     opacity: 0.8;
 }
 .next img{
-    /* border-style: solid;
-    border-width: 0.5px;
-    border-radius: 7px; */
     opacity: 0.2;
 }
 
@@ -230,13 +206,6 @@ body {
 
 
 .checker-container{
-    /* width: 1440px;
-    height: 100%;
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    display: none; */
-
     width: var(--screen_resolution);
     height: 100%;
     margin: 0;
@@ -246,20 +215,8 @@ body {
     z-index: 5;
 
     display: none;
-
-    /* disable text selection*/
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
 }
 .checker-group{
-    /* position: relative;
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-direction: row;
-    justify-content: center; */
-
     position: relative;
     width: var(--screen_resolution);
     height: fit-content;
@@ -268,11 +225,7 @@ body {
     grid-template-columns: repeat(13, calc(var(--checker_card_width) + 4.5px * 2));
     grid-template-rows: repeat(4, calc(726 * var(--checker_card_width) / 500 + 4.5px * 2));
     justify-content: center;
-    /* justify-self: center; */
 }
-/* #checker-group-1{
-    margin-top: 2.25%;
-} */
 .checker-box{
     width: var(--checker_card_width);
     height: calc(726 * var(--checker_card_width) / 500);
@@ -335,9 +288,6 @@ body {
     padding: 1.5% 10px;
     right: 2%;
     bottom: 7px;
-    /* justify-content: center; */
-    /* flex-wrap: wrap; */
-    /* align-content: center; */
     font-size: 25px;
     border-radius: 30%;
     background-color: rgba(255, 99, 71, 0.3);
@@ -375,11 +325,6 @@ body {
     z-index: 5;
 
     display: none;
-
-    /* disable text selection*/
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
 }
 
 .score{
@@ -402,7 +347,6 @@ body {
     grid-template-columns: repeat(13, 6.55%);
     grid-template-rows: repeat(4, calc(726 * var(--show_answer_width) / 500 + 10px * 2));
     justify-content: center;
-    /* justify-self: center; */
 }
 .show-answer-box{
     width: var(--show_answer_width);
@@ -411,7 +355,7 @@ body {
     margin: 4.5px;
     border-style: solid;
     border-width: 0.5px;
-    background-color: rgb(250, 250, 250);/*#f79999;*/
+    background-color: rgb(250, 250, 250);
 }
 
 .show-original{
@@ -434,7 +378,12 @@ body {
 
 
 /* for mobile phones */
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 1200px) and (max-height: 624px) {
+    :root{
+        --card_width_for_mobile: 7em;
+        --checker_card_width_for_mobile: 2.5em;
+        --show_answer_width_for_mobile: 2.5em;
+    }
     .overlay {
         width: var(--screen_resolution);
         height: 100%;
@@ -466,17 +415,18 @@ body {
 
     .checker-container{
         width: var(--screen_resolution);
+        z-index: 3;
     }
     .checker-group{
         position: relative;
-        width: var(--screen_resolution);
+        width: 90%;
         height: fit-content;
         margin-top: 2.25%;
+        margin-left: 10%;
         display: grid;
         grid-template-columns: repeat(13, calc(var(--checker_card_width_for_mobile) + 4.5px * 2));
         grid-template-rows: repeat(4, calc(726 * var(--checker_card_width_for_mobile) / 500 + 4.5px * 2));
         justify-content: center;
-        /* justify-self: center; */
     }
     .checker-box{
         width: var(--checker_card_width_for_mobile);
@@ -487,7 +437,6 @@ body {
         border-width: 0.5px;
         background-color: rgb(250, 250, 250);/*#f79999;*/
     }
-
     .checker-selection-box{
         width: var(--checker_card_width_for_mobile);
         height: calc(726 * var(--checker_card_width_for_mobile) / 500);
@@ -497,6 +446,17 @@ body {
         border-width: 0.5px;
         background-color: #f79999;/*rgb(250, 250, 250);*/
         cursor: pointer;
+    }
+    .suits{
+        width: 10%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        position: absolute;
+        bottom: 5px;
+    
+        /* z-index: inherit; */
     }
 
 
@@ -524,7 +484,7 @@ body {
 
 
     .score{
-        font-size: x-large;
+        font-size: larger;
     }
     .show-answer-group{
         position: relative;
@@ -541,7 +501,7 @@ body {
         width: var(--show_answer_width_for_mobile);
         height: calc(726 * var(--show_answer_width_for_mobile) / 500);
         padding: 0;
-        margin: 4.5px;
+        margin: 3.5px;
         border-style: solid;
         border-width: 0.5px;
         background-color: rgb(250, 250, 250);/*#f79999;*/
