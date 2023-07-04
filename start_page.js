@@ -170,7 +170,7 @@ function shuffle(array){
         current_index = array.length;
     }
 
-    // add four card-backs to the end of the array
+    // add three card-backs to the end of the array
     for(let i=0; i<3; i+=1){
         array.push("card_pics/poker-card-back.png");
     }
@@ -178,15 +178,16 @@ function shuffle(array){
     return array;
 }
 
-function preload_img(img_url){
-    let img = new Image();
-    img.src = img_url;
+function preload_img(img_arr){
+    for(i=0; i<52; i++){
+        let img = new Image();
+        img.src = img_arr[i];
+    }
 }
 
 function change_img(l_or_r){
     switch(l_or_r.bar){
         case 0: default:
-            preload_img(shuffled_img[3]);
             if(card_count === 0){
                 bar.textContent = "click here to change to next card";
                 box3.src = shuffled_img[card_count++];
@@ -213,10 +214,10 @@ function change_img(l_or_r){
             //TODO: right click to go back to the last card
 
     }
-    preload_img(shuffled_img[card_count+1]);    
 }
 
 shuffle(shuffled_img);
+preload_img(shuffled_img);
 bar.addEventListener("click", change_img);
 
 

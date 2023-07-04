@@ -21,10 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
     history_btn.addEventListener("click", function(){
       window.alert("Still working");
     });
-    // Setting button
+    // How to use button
     var setting_btn = document.getElementById("setting-btn");
     setting_btn.addEventListener("click", function(){
       menuButton.click();
+      htu_btn.click();
     });
 });
 
