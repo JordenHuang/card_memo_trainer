@@ -69,8 +69,8 @@ home.addEventListener("click", go_home);
 hide_time.addEventListener("click", to_hide_or_show_time);
 
 
-let loading = document.getElementById("transistion");
-loading.style.display = "none";
+let loading = document.getElementById("loading");
+// loading.style.display = "none";
 
 
 
@@ -183,6 +183,7 @@ function preload_img(img_arr){
         let img = new Image();
         img.src = img_arr[i];
     }
+    loading.style.display = "none";
 }
 
 function change_img(l_or_r){
@@ -748,6 +749,8 @@ let score_bar = document.querySelector(".score");
 
 let show_original_btn = document.querySelector(".show-original");
 
+let correct_count = 0;
+
 let original_btn_is_clicked = false;
 
 // console.log(show_answer_group);
@@ -762,7 +765,6 @@ function sleep(ms) {
 }
 
 function check_answer(i) {
-    let correct_count = 0;
     let img = checker_group.children[i].src;
 
     img = img.slice(img.indexOf('card_pics'));
@@ -799,13 +801,22 @@ async function show_answer(){
 
 
 function show_original(){
+    correct_count = 0;
     if(show_original_btn.textContent === "Original"){
         original_btn_is_clicked = true;
 
         for(let i=0; i<checker_group.childElementCount; i+=1){
-            let img = shuffled_img[i];
+            let img = checker_group.children[i].src;
+            img = img.slice(img.indexOf('card_pics'));
+            if(img === shuffled_img[i]){
+                correct_count++;
+                score_bar.innerHTML = "Score: " + correct_count + "/52<br>Time used: " + time_used;
+            }
 
-            show_answer_group.children[i].src = img;
+
+            let original_img = shuffled_img[i];
+
+            show_answer_group.children[i].src = original_img;
             show_answer_group.children[i].style.cssText = '';
         }
 

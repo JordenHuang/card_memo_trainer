@@ -68,6 +68,8 @@ body {
   /* 初始狀態為隱藏 */
   transition: left var(--trans_time) ease;
   z-index: 1;
+
+  overflow: hidden;
 }
 
 .sidebar-visible {
