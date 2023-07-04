@@ -288,7 +288,7 @@ body {
     width: fit-content;
     height: fit-content;
     padding: 1.5% 10px;
-    right: 2%;
+    right: 0;
     bottom: 7px;
     font-size: 25px;
     border-radius: 30%;
@@ -421,10 +421,9 @@ body {
     }
     .checker-group{
         position: relative;
-        width: 90%;
         height: fit-content;
         margin-top: 2.25%;
-        margin-left: 10%;
+        margin-left: 7%;
         display: grid;
         grid-template-columns: repeat(13, calc(var(--checker_card_width_for_mobile) + 4.5px * 2));
         grid-template-rows: repeat(4, calc(726 * var(--checker_card_width_for_mobile) / 500 + 4.5px * 2));
@@ -439,6 +438,11 @@ body {
         border-width: 0.5px;
         background-color: rgb(250, 250, 250);/*#f79999;*/
     }
+    .checker-selection-group{
+        /* width: 85%; */
+        position: absolute;
+        /* left: 5%; */
+    }
     .checker-selection-box{
         width: var(--checker_card_width_for_mobile);
         height: calc(726 * var(--checker_card_width_for_mobile) / 500);
@@ -450,12 +454,12 @@ body {
         cursor: pointer;
     }
     .suits{
-        width: 10%;
+        width: 15%;
         height: fit-content;
-        display: flex;
+        display: grid;
         flex-direction: column;
-        justify-content: left;
-        position: absolute;
+        justify-content: center;
+        position:absolute;
         bottom: 5px;
     
         /* z-index: inherit; */
@@ -473,15 +477,9 @@ body {
     #finish-btn, .show-original{
         position: absolute;
         width: fit-content;
-        height: fit-content;
-        padding: 1.5% 10px;
-        right: 2%;
-        justify-content: center;
-        flex-wrap: wrap;
-        align-content: center;
-        font-size: 5px;
+        font-size: 25%;
         border-radius: 30%;
-        background-color: rgba(255, 99, 71, 0.3);
+        bottom: 0;
     }
 
 

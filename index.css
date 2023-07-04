@@ -42,12 +42,14 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 
+  overflow: scroll;
+
   background-color: rgba(245, 245, 245, 0.9);
   z-index: 3;
   display: none;
 }
 .overlay-2-inside div{
-  position: absolute;
+  position: static;
   text-align: center;
   width: 100%;
   bottom: 0;
